@@ -1,16 +1,18 @@
 
-$("#currentDay").append("The current day is " + moment().format('dddd, MMM Do'));
+$("#currentDay").append("The current day is: " + moment().format('dddd, MMM Do'));
 
 var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12am", "1am", "2am", "3am", "4am", "5am"]
+
+
 
 for (let i = 0; i < hours.length; i++) {
   var hoursDisplay = hours[i];
 
   // created parent div
-  var parentDiv = $("<div>").addClass("row");
+  var parentDiv = $("<div>").addClass("row hour");
 
   // created hours and append
-  var newHour = $("<div>").addClass("time-block row-1 hour").text(hoursDisplay);
+  var newHour = $("<div>").addClass("time-block row-1").text(hoursDisplay);
   $(parentDiv).append(newHour);
 
   // created and append text area
@@ -34,8 +36,8 @@ $(".saveBtn").click(function() {
   var entry = $(this).siblings("textarea").val()
   var time = $(this).parent(".row").text()
 
-  localStorage.setItem ("entry", entry);
-  localStorage.setItem ("time", time);
+  localStorage.setItem (time, entry);
+  localStorage.setItem (time, entry);
 
   console.log(time);
   console.log(entry);
@@ -43,33 +45,37 @@ $(".saveBtn").click(function() {
 
 var loadSchedule = function() {
 
-  entry = JSON.parse(localStorage.getItem("entry"));
+  var entry = $(this).siblings("textarea").val()
+  var time = $(this).parent(".row").text()
 
+  var savedSchedule = localStorage.getItem(time, entry);
+  
+  if (!savedSchedule) {
+    return false;
+  } else {
+     savedSchedule = JSON.parse(savedSchedule);
+  }
 }
 
-// var timeBlockColorChange = function() {
+var timeBlockColorChange = function() {
 
-//   var currentTime = moment().format("MMMM Do, YYYY - hh:mm:ss a");
-//   console.log(currentTime);
+  var currentTime = moment().format("MMMM Do, YYYY - hh:mm:ss a");
+  console.log(currentTime);
   
-//   if (moment().isAfter(currentTime)) {
-//     $(textEl).addClass("past");
-//   } else ()
-// }
-
-
-// var addTask = function () {
-
-// }
-
-// var saveTask = function (event) {
-//   // var savedTasks = localStorage.setItem("tasks");
-//   console.log("click")
-//   // console.log(savedTasks);
-// };
+  if (moment().isAfter(currentTime)) {
+    $("textarea").addClass("past");
+  } else if (moment().isBefore(currentTime)) {
+    $("textarea").addClass("future");
+  } else { $("textarea").addClass("present")
+  }
+};
 
 
 
+
+timeBlockColorChange();
+
+loadSchedule();
 
 
 
