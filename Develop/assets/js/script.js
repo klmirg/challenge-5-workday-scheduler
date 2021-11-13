@@ -1,8 +1,9 @@
 
 $("#currentDay").append("The current day is: " + moment().format('dddd, MMM Do'));
 
-var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12am", "1am", "2am", "3am", "4am", "5am"]
+var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
 
+var militaryHours = ["6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17"]
 
 
 for (let i = 0; i < hours.length; i++) {
@@ -28,8 +29,8 @@ for (let i = 0; i < hours.length; i++) {
   $(newButton).append(saveIcon);
 
   $(".container").append(parentDiv);
-
 }
+
 
 $(".saveBtn").click(function() {
   
@@ -43,18 +44,21 @@ $(".saveBtn").click(function() {
   console.log(entry);
 }); 
 
+// either for each it or loop through it
 var loadSchedule = function() {
 
   var entry = $(this).siblings("textarea").val()
   var time = $(this).parent(".row").text()
 
   var savedSchedule = localStorage.getItem(time, entry);
+
+ 
   
-  if (!savedSchedule) {
-    return false;
-  } else {
-     savedSchedule = JSON.parse(savedSchedule);
-  }
+  // if (!savedSchedule) {
+  //   return false;
+  // } else {
+  //    savedSchedule = JSON.parse(savedSchedule);
+  // }
 }
 
 // Get current time
@@ -62,16 +66,16 @@ var loadSchedule = function() {
 // compare each hour to the current time
 // have the if else to compare the time
 // add the coloring class to the class of that hour
-var timeBlockColorChange = function(hours) {
+var timeBlockColorChange = function() {
 
-  var currentTime = moment().format("MMMM Do, YYYY - hh:mm:ss a");
+  var currentTime = moment().format("hh:mm:ss a");
   console.log(currentTime);
   
-  for (let i = 0; i < hours.length; i++) {
+  for (let i = 0; i < militaryHours.length; i++) {
     
-    if (hours[i] >= currentTime) {
+    if (militaryHours[i] < currentTime) {
       $("hoursDisplay").addClass("past");
-    } else if (hours[i] <= currentTime) {
+    } else if (militaryHours[i] > currentTime) {
       $("hoursDisplay").addClass("future");
     } else { $("hoursDisplay").addClass("present")
     }
