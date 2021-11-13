@@ -17,7 +17,7 @@ for (let i = 0; i < hours.length; i++) {
   $(parentDiv).append(newHour);
 
   // created and append text area.......... add a specific hour class to newText
-  var newText = $("<textarea>").addClass("time-block description col-10 hoursDisplay")
+  var newText = $("<textarea>").addClass("time-block description col-10 hoursDisplay").attr("id", militaryHours[i]);
   $(parentDiv).append(newText);
 
   // created a button and appending the button to the parentDiv
@@ -29,15 +29,34 @@ for (let i = 0; i < hours.length; i++) {
   $(newButton).append(saveIcon);
 
   $(".container").append(parentDiv);
+
+  var loadSchedule = function() {
+
+    // var entry = $(this).siblings("textarea").val()
+    var entry = localStorage.getItem(militaryHours[i]);
+    $("#" + militaryHours[i]).val(entry);
+  
+    // var savedSchedule = localStorage.getItem(time, entry);
+  
+   
+    // if (!savedSchedule) {
+    //   return false;
+    // } else {
+    //    savedSchedule = JSON.parse(savedSchedule);
+    // }
+   
+  };
+  loadSchedule();
 }
 
+let textAreas = document.getElementsByClassName('description');
+textAreas[0].textContent = localStorage.getItem('');
 
 $(".saveBtn").click(function() {
   
   var entry = $(this).siblings("textarea").val()
-  var time = $(this).parent(".row").text()
+  var time = $(this).siblings("textarea").attr("id")
 
-  localStorage.setItem (time, entry);
   localStorage.setItem (time, entry);
 
   console.log(time);
@@ -45,21 +64,21 @@ $(".saveBtn").click(function() {
 }); 
 
 // either for each it or loop through it
-var loadSchedule = function() {
+// var loadSchedule = function() {
 
-  var entry = $(this).siblings("textarea").val()
-  var time = $(this).parent(".row").text()
+//   var entry = $(this).siblings("textarea").val()
+//   var time = $(this).parent(".row").text()
 
-  var savedSchedule = localStorage.getItem(time, entry);
+//   var savedSchedule = localStorage.getItem(time, entry);
 
  
   
-  // if (!savedSchedule) {
-  //   return false;
-  // } else {
-  //    savedSchedule = JSON.parse(savedSchedule);
-  // }
-}
+//   // if (!savedSchedule) {
+//   //   return false;
+//   // } else {
+//   //    savedSchedule = JSON.parse(savedSchedule);
+//   // }
+// }
 
 // Get current time
 // loop through hours
@@ -88,7 +107,7 @@ var timeBlockColorChange = function() {
 
 timeBlockColorChange();
 
-loadSchedule();
+
 
 
 
