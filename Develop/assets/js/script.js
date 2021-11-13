@@ -1,5 +1,3 @@
-// var buttonEl = document.querySelectorAll(".saveBtn");
-// var events = {};
 
 $("#currentDay").append("The current day is " + moment().format('dddd, MMM Do'));
 
@@ -23,7 +21,7 @@ for (let i = 0; i < hours.length; i++) {
   var newButton = $("<button>").addClass("time-block saveBtn col-1").attr("width", "20");
   $(parentDiv).append(newButton);
 
-  // put icon on the button
+  // putting the icon on the button
   var saveIcon = $("<span>").addClass("fas fa-save");
   $(newButton).append(saveIcon);
 
@@ -36,7 +34,7 @@ $(".saveBtn").click(function() {
   var entry = $(this).siblings("textarea").val()
   var time = $(this).parent(".row").text()
 
-  localStorage.setItem ("event", entry);
+  localStorage.setItem ("entry", entry);
   localStorage.setItem ("time", time);
 
   console.log(time);
@@ -49,7 +47,15 @@ var loadSchedule = function() {
 
 }
 
+// var timeBlockColorChange = function() {
 
+//   var currentTime = moment().format("MMMM Do, YYYY - hh:mm:ss a");
+//   console.log(currentTime);
+  
+//   if (moment().isAfter(currentTime)) {
+//     $(textEl).addClass("past");
+//   } else ()
+// }
 
 
 // var addTask = function () {
@@ -63,14 +69,9 @@ var loadSchedule = function() {
 // };
 
 
-// var saveTaskHandler = function () {
-  
-
-// }
 
 
 
-// loadEvents();
 
 
 
