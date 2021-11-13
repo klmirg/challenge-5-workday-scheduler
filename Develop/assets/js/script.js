@@ -15,8 +15,8 @@ for (let i = 0; i < hours.length; i++) {
   var newHour = $("<div>").addClass("time-block row-1").text(hoursDisplay);
   $(parentDiv).append(newHour);
 
-  // created and append text area
-  var newText = $("<textarea>").addClass("time-block description col-10")
+  // created and append text area.......... add a specific hour class to newText
+  var newText = $("<textarea>").addClass("time-block description col-10 hoursDisplay")
   $(parentDiv).append(newText);
 
   // created a button and appending the button to the parentDiv
@@ -57,18 +57,27 @@ var loadSchedule = function() {
   }
 }
 
-var timeBlockColorChange = function() {
+// Get current time
+// loop through hours
+// compare each hour to the current time
+// have the if else to compare the time
+// add the coloring class to the class of that hour
+var timeBlockColorChange = function(hours) {
 
   var currentTime = moment().format("MMMM Do, YYYY - hh:mm:ss a");
   console.log(currentTime);
   
-  if (moment().isAfter(currentTime)) {
-    $("textarea").addClass("past");
-  } else if (moment().isBefore(currentTime)) {
-    $("textarea").addClass("future");
-  } else { $("textarea").addClass("present")
+  for (let i = 0; i < hours.length; i++) {
+    
+    if (hours[i] >= currentTime) {
+      $("hoursDisplay").addClass("past");
+    } else if (hours[i] <= currentTime) {
+      $("hoursDisplay").addClass("future");
+    } else { $("hoursDisplay").addClass("present")
+    }
   }
 };
+
 
 
 
