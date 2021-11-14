@@ -67,20 +67,26 @@ var timeBlockColorChange = function() {
 
   var currentTime = moment().format("kk");
   console.log(currentTime);
-  
-  
-  for (let i = 0; i < militaryHours.length; i++) {
-    
-    if (militaryHours[i] < currentTime) {
-      $("hoursDisplay").addClass("past");
-    } else if (militaryHours[i] > currentTime) {
-      $("hoursDisplay").addClass("future");
-    } else { $("hoursDisplay").addClass("present")
-    }
+
+  if (currentTime > militaryHours) {
+    $(this).addClass("future");
+  } else if (currentTime === militaryHours) {
+    $(this).addClass("present");
+  } else {
+    $(this).addClass("past");
   }
+  
+  
+  // for (let i = 0; i < militaryHours.length; i++) {
+    
+  //   if (militaryHours[i] < currentTime) {
+  //     $("hoursDisplay").addClass("past");
+  //   } else if (militaryHours[i] > currentTime) {
+  //     $("hoursDisplay").addClass("future");
+  //   } else { $("hoursDisplay").addClass("present")
+  //   }
+  // }
 };
-
-
 
 
 
