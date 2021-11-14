@@ -35,15 +35,6 @@ for (let i = 0; i < hours.length; i++) {
     // var entry = $(this).siblings("textarea").val()
     var entry = localStorage.getItem(militaryHours[i]);
     $("#" + militaryHours[i]).val(entry);
-  
-    // var savedSchedule = localStorage.getItem(time, entry);
-  
-   
-    // if (!savedSchedule) {
-    //   return false;
-    // } else {
-    //    savedSchedule = JSON.parse(savedSchedule);
-    // }
    
   };
   loadSchedule();
@@ -63,22 +54,7 @@ $(".saveBtn").click(function() {
   console.log(entry);
 }); 
 
-// either for each it or loop through it
-// var loadSchedule = function() {
 
-//   var entry = $(this).siblings("textarea").val()
-//   var time = $(this).parent(".row").text()
-
-//   var savedSchedule = localStorage.getItem(time, entry);
-
- 
-  
-//   // if (!savedSchedule) {
-//   //   return false;
-//   // } else {
-//   //    savedSchedule = JSON.parse(savedSchedule);
-//   // }
-// }
 
 // Get current time
 // loop through hours
