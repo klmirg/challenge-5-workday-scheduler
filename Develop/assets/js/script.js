@@ -17,7 +17,7 @@ for (let i = 0; i < hours.length; i++) {
   $(parentDiv).append(newHour);
 
   // created and append text area.......... add a specific hour class to newText
-  var newText = $("<textarea>").addClass("time-block description col-10 hoursDisplay past present future").attr("id", militaryHours[i]);
+  var newText = $("<textarea>").addClass("time-block description col-10 hoursDisplay").attr("id", militaryHours[i]);
   $(parentDiv).append(newText);
 
   // created a button and appending the button to the parentDiv
@@ -72,14 +72,15 @@ var timeBlockColorChange = function() {
 
 textAreas.each( function (index, element) {
   var elementTime = $(element).attr("id")
-  parseInt(elementTime);
+  var numberVersionOfElTime = parseInt(elementTime);
 
   if (elementTime > currentTime) {
-    $(element).addClass("future")
-    $(element).removeClass("past")
-    $(element).removeClass("present");
+    $(numberVersionOfElTime).addClass("future")
+    
+  } else if (elementTime === currentTime) {
+    $(numberVersionOfElTime).addClass("present");
   } else {
-    $(element).addClass("past");
+    $(numberVersionOfElTime).addClass("past");
   }
 });
 
