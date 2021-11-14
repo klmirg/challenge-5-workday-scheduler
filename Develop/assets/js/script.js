@@ -17,7 +17,7 @@ for (let i = 0; i < hours.length; i++) {
   $(parentDiv).append(newHour);
 
   // created and append text area.......... add a specific hour class to newText
-  var newText = $("<textarea>").addClass("time-block description col-10 hoursDisplay").attr("id", militaryHours[i]);
+  var newText = $("<textarea>").addClass("time-block description col-10 hoursDisplay past present future").attr("id", militaryHours[i]);
   $(parentDiv).append(newText);
 
   // created a button and appending the button to the parentDiv
@@ -75,12 +75,18 @@ textAreas.each( function (index, element) {
   var numberVersionOfElTime = parseInt(elementTime);
 
   if (elementTime > currentTime) {
-    $(numberVersionOfElTime).addClass("future")
+    $(numberVersionOfElTime).addClass("future");
+    $(numberVersionOfElTime).removeClass("present");
+    $(numberVersionOfElTime).removeClass("past");
     
   } else if (elementTime === currentTime) {
     $(numberVersionOfElTime).addClass("present");
+    $(numberVersionOfElTime).removeClass("future");
+    $(numberVersionOfElTime).removeClass("past");
   } else {
     $(numberVersionOfElTime).addClass("past");
+    $(numberVersionOfElTime).removeClass("future");
+    $(numberVersionOfElTime).removeClass("present");
   }
 });
 
