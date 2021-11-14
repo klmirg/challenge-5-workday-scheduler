@@ -1,9 +1,9 @@
 
 $("#currentDay").append("The current day is: " + moment().format('dddd, MMM Do'));
 
-var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12am", "1am", "2am", "3am", "4am", "5am"]
+var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"]
 
-var militaryHours = ["6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17","18","19","20","21", "22", "23", "24"]
+var militaryHours = ["6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17","18"]
 
 
 for (let i = 0; i < hours.length; i++) {
@@ -62,10 +62,12 @@ $(".saveBtn").click(function() {
 // compare each hour to the current time
 // have the if else to compare the time
 // add the coloring class to the class of that hour
+
 var timeBlockColorChange = function() {
 
-  var currentTime = moment().format("hh:mm:ss a");
+  var currentTime = moment().format("kk");
   console.log(currentTime);
+  
   
   for (let i = 0; i < militaryHours.length; i++) {
     
@@ -83,9 +85,6 @@ var timeBlockColorChange = function() {
 
 
 timeBlockColorChange();
-
-
-
 
 
 
