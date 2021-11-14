@@ -1,9 +1,9 @@
 
 $("#currentDay").append("The current day is: " + moment().format('dddd, MMM Do'));
 
-var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"]
+var hours = [ "1am" ,"2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"]
 
-var militaryHours = ["6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17","18"]
+var militaryHours = ["1", "2", "3" , "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17","18"]
 
 
 for (let i = 0; i < hours.length; i++) {
@@ -65,27 +65,33 @@ $(".saveBtn").click(function() {
 
 var timeBlockColorChange = function() {
 
-  var currentTime = moment().format("kk");
+  var currentTime = parseInt(moment().format("kk"));
   console.log(currentTime);
 
-  if (currentTime > militaryHours) {
-    $(this).addClass("future");
-  } else if (currentTime === militaryHours) {
-    $(this).addClass("present");
+  var textAreas = $("textarea")
+
+textAreas.each( function (index, element) {
+  var elementTime = $(element).attr("id")
+  parseInt(elementTime);
+
+  if (elementTime > currentTime) {
+    $(element).addClass("future")
+    $(element).removeClass("past")
+    $(element).removeClass("present");
   } else {
-    $(this).addClass("past");
+    $(element).addClass("past");
   }
+});
+
+// if (currentTime > militaryHours) {
+//   $(element).addClass("future");
+// } else if (currentTime === militaryHours) {
+//   $(element).addClass("present");
+// } else {
+//   $(element).addClass("past");
+// }
   
-  
-  // for (let i = 0; i < militaryHours.length; i++) {
-    
-  //   if (militaryHours[i] < currentTime) {
-  //     $("hoursDisplay").addClass("past");
-  //   } else if (militaryHours[i] > currentTime) {
-  //     $("hoursDisplay").addClass("future");
-  //   } else { $("hoursDisplay").addClass("present")
-  //   }
-  // }
+
 };
 
 
