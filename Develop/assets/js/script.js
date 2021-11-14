@@ -1,9 +1,9 @@
 
 $("#currentDay").append("The current day is: " + moment().format('dddd, MMM Do'));
 
-var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
+var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12am", "1am", "2am", "3am", "4am", "5am"]
 
-var militaryHours = ["6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17"]
+var militaryHours = ["6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17","18","19","20","21", "22", "23", "24"]
 
 
 for (let i = 0; i < hours.length; i++) {
@@ -17,7 +17,7 @@ for (let i = 0; i < hours.length; i++) {
   $(parentDiv).append(newHour);
 
   // created and append text area.......... add a specific hour class to newText
-  var newText = $("<textarea>").addClass("time-block description col-10 hoursDisplay").attr("id", militaryHours[i]);
+  var newText = $("<textarea>").addClass("time-block description col-10 hoursDisplay past present future").attr("id", militaryHours[i]);
   $(parentDiv).append(newText);
 
   // created a button and appending the button to the parentDiv
@@ -39,6 +39,7 @@ for (let i = 0; i < hours.length; i++) {
   };
   loadSchedule();
 }
+
 
 let textAreas = document.getElementsByClassName('description');
 textAreas[0].textContent = localStorage.getItem('');
