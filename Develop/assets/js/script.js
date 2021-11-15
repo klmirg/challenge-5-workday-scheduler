@@ -1,9 +1,9 @@
-
+// Giving the current day 
 $("#currentDay").append("The current day is: " + moment().format('dddd, MMM Do'));
+// Hours of the day
+var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12am"]
 
-var hours = [ "1am" ,"2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12am"]
-
-var militaryHours = ["1", "2", "3" , "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17","18"]
+var militaryHours = ["6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17","18", "19", "20", "21", "22", "23", "24"]
 
 
 for (let i = 0; i < hours.length; i++) {
@@ -42,6 +42,7 @@ for (let i = 0; i < hours.length; i++) {
 
 
 let textAreas = document.getElementsByClassName('description');
+// This is getting what text I have in localStorage
 textAreas[0].textContent = localStorage.getItem('');
 
 $(".saveBtn").click(function() {
@@ -50,19 +51,9 @@ $(".saveBtn").click(function() {
   var time = $(this).siblings("textarea").attr("id")
 
   localStorage.setItem (time, entry);
-
-  console.log(time);
-  console.log(entry);
 }); 
 
-
-
-// Get current time
-// loop through hours
-// compare each hour to the current time
-// have the if else to compare the time
-// add the coloring class to the class of that hour
-
+// This function is to change the colors based on what time it is, if something is in the past, future, or present
 var timeBlockColorChange = function() {
 
   var currentTime = parseInt(moment().format("kk"));
@@ -74,38 +65,25 @@ textAreas.each( function (index, element) {
   var elementTime = $(element).attr("id")
   var numberVersionOfElTime = parseInt(elementTime);
 
+  console.log(elementTime + " and " + currentTime)
+// Comparing the currentTime to the time slot on the page, to decide which color it needs, based on past, present, or future.
   if (elementTime > currentTime) {
-    $(textAreas).addClass("future");
-    $(textAreas).removeClass("present");
-    $(textAreas).removeClass("past");
+    $(textAreas[index]).addClass("future");
+    $(textAreas[index]).removeClass("present");
+    $(textAreas[index]).removeClass("past");
     
-  } else if (elementTime === currentTime) {
-    $(textAreas).addClass("present");
-    $(textAreas).removeClass("future");
-    $(textAreas).removeClass("past");
+  } else if (elementTime == currentTime) {
+    $(textAreas[index]).addClass("present");
+    $(textAreas[index]).removeClass("future");
+    $(textAreas[index]).removeClass("past");
   } else {
-    $(textAreas).addClass("past");
-    $(textAreas).removeClass("future");
-    $(textAreas).removeClass("present");
+    $(textAreas[index]).addClass("past");
+    $(textAreas[index]).removeClass("future");
+    $(textAreas[index]).removeClass("present");
   }
 });
-
-// if (currentTime > militaryHours) {
-//   $(element).addClass("future");
-// } else if (currentTime === militaryHours) {
-//   $(element).addClass("present");
-// } else {
-//   $(element).addClass("past");
-// }
-  
-
 };
 
 
 
 timeBlockColorChange();
-
-
-
-
-  
