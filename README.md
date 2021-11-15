@@ -12,7 +12,7 @@ A daily Scheduler for your activities for each hour of the day.
 ## Website
 
 ## Image of Website
-![]()
+![](Develop/assets/images/screenshot.png)
 
 ## Contribution
 Ronya Gettis
