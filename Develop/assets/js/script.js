@@ -1,7 +1,7 @@
 
 $("#currentDay").append("The current day is: " + moment().format('dddd, MMM Do'));
 
-var hours = [ "1am" ,"2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"]
+var hours = [ "1am" ,"2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12am"]
 
 var militaryHours = ["1", "2", "3" , "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17","18"]
 
@@ -75,18 +75,18 @@ textAreas.each( function (index, element) {
   var numberVersionOfElTime = parseInt(elementTime);
 
   if (elementTime > currentTime) {
-    $(numberVersionOfElTime).addClass("future");
-    $(numberVersionOfElTime).removeClass("present");
-    $(numberVersionOfElTime).removeClass("past");
+    $(textAreas).addClass("future");
+    $(textAreas).removeClass("present");
+    $(textAreas).removeClass("past");
     
   } else if (elementTime === currentTime) {
-    $(numberVersionOfElTime).addClass("present");
-    $(numberVersionOfElTime).removeClass("future");
-    $(numberVersionOfElTime).removeClass("past");
+    $(textAreas).addClass("present");
+    $(textAreas).removeClass("future");
+    $(textAreas).removeClass("past");
   } else {
-    $(numberVersionOfElTime).addClass("past");
-    $(numberVersionOfElTime).removeClass("future");
-    $(numberVersionOfElTime).removeClass("present");
+    $(textAreas).addClass("past");
+    $(textAreas).removeClass("future");
+    $(textAreas).removeClass("present");
   }
 });
 
