@@ -1,9 +1,9 @@
 // Giving the current day 
 $("#currentDay").append("The current day is: " + moment().format('dddd, MMM Do'));
 // Hours of the day
-var hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12am"]
+var hours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
 
-var militaryHours = ["6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17","18", "19", "20", "21", "22", "23", "24"]
+var militaryHours = ["9","10", "11", "12", "13", "14", "15", "16", "17"]
 
 
 for (let i = 0; i < hours.length; i++) {
